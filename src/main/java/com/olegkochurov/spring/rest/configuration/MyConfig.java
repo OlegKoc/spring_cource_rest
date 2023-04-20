@@ -13,8 +13,8 @@ import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
 import java.util.Properties;
 
-@Configuration
-@ComponentScan(basePackages = "com.olegkochurov.spring.rest")
+@Configuration  // конфигурационный класс
+@ComponentScan(basePackages = "com.olegkochurov.spring.rest")    // пакет, который должен сканрировать данный класс
 @EnableWebMvc
 @EnableTransactionManagement
 public class MyConfig {
@@ -24,7 +24,7 @@ public class MyConfig {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         try {
             dataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
-            dataSource.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/my_db?useSSL=false&amp;serverTimezone=UTC");
+            dataSource.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/my_db?useSSL=false");
             dataSource.setUser("bestuser");
             dataSource.setPassword("bestuser");
 
@@ -48,10 +48,11 @@ public class MyConfig {
 
     }
 
+    @Bean
     public HibernateTransactionManager transactionManager() {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager();
         transactionManager.setSessionFactory(sessionFactory().getObject());
         return transactionManager;
     }
 
-}
+}  //jdbc:mysql://127.0.0.1:3306/my_db?useSSL=false&amp;serverTimezone=UTC
