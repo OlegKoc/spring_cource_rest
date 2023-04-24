@@ -55,4 +55,4 @@ public class MyConfig {
         return transactionManager;
     }
 
-}  //jdbc:mysql://127.0.0.1:3306/my_db?useSSL=false&amp;serverTimezone=UTC
+}
